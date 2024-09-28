@@ -22,6 +22,7 @@ import EmailResetPasswordPage from './Authentication/EmailResetPasswordPage';
 import ResetPasswordPage from './Authentication/ResetPasswordPage';
 import AlertPopup from './components/AlertPopup';
 import InviteRegisterPage from './Authentication/InviteRegisterPage';
+import UserPage from './User/UserPage';
 
 function App() {
   return (
@@ -55,8 +56,9 @@ function App() {
                     element={<InviteRegisterPage />}
                   />
                   {/* Routes accessed only if user is authenticated */}
-                  <Route element={<ProtectedRoutesWrapper />}>
+                  <Route element={<UnauthenticatedRoutesWrapper />}>
                     <Route path="/home" element={<HomePage />} />
+                    <Route path="/home/:userId" element={<UserPage />} />
                   </Route>
                   <Route element={<AdminRoutesWrapper />}>
                     <Route path="/users" element={<AdminDashboardPage />} />
