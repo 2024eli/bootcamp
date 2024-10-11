@@ -22,7 +22,7 @@ export default function Card({ id, name, url }: CardProps) {
 
   return (
     <CardMUI sx={{ maxWidth: 345 }} onClick={() => onClickHandler(id)}>
-      <CardMedia sx={{ height: 140 }} image={url} title="green iguana" />
+      <CardMedia sx={{ height: 140 }} image={url} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           {name}

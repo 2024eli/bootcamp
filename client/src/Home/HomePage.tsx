@@ -8,6 +8,16 @@ const users = [
     name: 'James',
     url: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png',
   },
+  {
+    id: '2',
+    name: 'Khoi',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png',
+  },
+  {
+    id: '3',
+    name: 'Evelyn',
+    url: '/evelyn.jpg',
+  },
 ];
 function HomePage() {
   return (
