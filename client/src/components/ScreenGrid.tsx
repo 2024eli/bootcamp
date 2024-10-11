@@ -12,11 +12,12 @@ function ScreenGrid({ children }: AnyChildren) {
   return (
     <Grid
       container
-      xs={12}
+      xs={4}
+      spacing={2}
+      padding={2}
       height="100vh"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
+      justifyContent="flex-start"
+      alignItems="flex-start"
     >
       {children}
     </Grid>

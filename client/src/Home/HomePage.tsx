@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box, Typography } from '@mui/material';
 import ScreenGrid from '../components/ScreenGrid';
 import Card from '../components/card/Card';
 
@@ -21,14 +22,16 @@ const users = [
 ];
 function HomePage() {
   return (
-    <div>
-      <h1>Toxic traits</h1>
+    <Box sx={{ padding: (theme) => theme.spacing(2) }}>
+      <Typography variant="h1" sx={{ mb: 2 }}>
+        Toxic traits
+      </Typography>
       <ScreenGrid>
         {users.map((user) => (
           <Card key={user.id} id={user.id} name={user.name} url={user.url} />
         ))}
       </ScreenGrid>
-    </div>
+    </Box>
   );
 }
 
