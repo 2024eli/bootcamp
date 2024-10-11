@@ -12,8 +12,7 @@ function ScreenGrid({ children }: AnyChildren) {
   return (
     <Grid
       container
-      xs={4}
-      spacing={2}
+      columnGap={2}
       padding={2}
       height="100vh"
       justifyContent="flex-start"
