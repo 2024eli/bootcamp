@@ -11,13 +11,14 @@ interface CardProps {
   id: string;
   name: string;
   url: string;
+  traits: string[];
 }
 
-export default function Card({ id, name, url }: CardProps) {
+export default function Card({ id, name, url, traits }: CardProps) {
   const navigate = useNavigate();
 
   const onClickHandler = (userId: string) => {
-    navigate(`/home/${userId}`);
+    navigate(`/home/${userId}`, { state: { name, traits } });
   };
 
   return (
