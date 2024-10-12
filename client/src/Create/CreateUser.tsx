@@ -1,4 +1,12 @@
 import React, { SetStateAction, useState } from 'react';
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  ListItemIcon,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { User } from '../util/types/custom';
@@ -29,25 +37,29 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
   };
 
   return (
-    <form style={{ width: '250px', display: 'flex', flexDirection: 'column' }}>
-      <input placeholder="Name" onChange={(e) => setName(e.target.value)} />
-      <div style={{ display: 'flex' }}>
-        <input
-          placeholder="Toxic trait"
-          value={toxicTrait}
-          onChange={(e) => setToxicTrait(e.target.value)}
-        />
-        <button onClick={addToxicTrait} value="Add toxic trait" type="button">
-          Add toxic trait
+    <Box sx={{ padding: (theme) => theme.spacing(2) }}>
+      <form
+        style={{ width: '250px', display: 'flex', flexDirection: 'column' }}
+      >
+        <input placeholder="Name" onChange={(e) => setName(e.target.value)} />
+        <div style={{ display: 'flex' }}>
+          <input
+            placeholder="Toxic trait"
+            value={toxicTrait}
+            onChange={(e) => setToxicTrait(e.target.value)}
+          />
+          <button onClick={addToxicTrait} value="Add toxic trait" type="button">
+            Add toxic trait
+          </button>
+        </div>
+        <ul>
+          {toxicTraits.length !== 0 &&
+            toxicTraits.map((trait) => <li>{trait}</li>)}
+        </ul>
+        <button onClick={addUser} value="submit" type="button">
+          Submit
         </button>
-      </div>
-      <ul>
-        {toxicTraits.length !== 0 &&
-          toxicTraits.map((trait) => <li>{trait}</li>)}
-      </ul>
-      <button onClick={addUser} value="submit" type="button">
-        Submit
-      </button>
-    </form>
+      </form>
+    </Box>
   );
 }
