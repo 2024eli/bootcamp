@@ -21,8 +21,22 @@ export default function UserPage() {
   const { name, traits } = location.state as UserState;
 
   return (
-    <div>
-      <Typography align="center" variant="h5" gutterBottom>
+    <Box sx={{ padding: (theme) => theme.spacing(2) }}>
+      <Typography
+        variant="h4"
+        align="center"
+        color="grey.700"
+        sx={{
+          backgroundcolor: 'primary',
+          backgroundImage: `linear-gradient(45deg, #5514B4, #FF80FF)`,
+          backgroundSize: '100%',
+          backgroundRepeat: 'repeat',
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          mb: 2,
+        }}
+      >
         {name}
         {apos}s Toxic Traits:
       </Typography>
@@ -40,6 +54,6 @@ export default function UserPage() {
           ))}
         </List>
       </Box>
-    </div>
+    </Box>
   );
 }
