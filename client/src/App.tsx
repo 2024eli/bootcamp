@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -23,8 +23,48 @@ import ResetPasswordPage from './Authentication/ResetPasswordPage';
 import AlertPopup from './components/AlertPopup';
 import InviteRegisterPage from './Authentication/InviteRegisterPage';
 import UserPage from './User/UserPage';
+import CreateUser from './Create/CreateUser';
+
+const users = [
+  {
+    id: '1',
+    name: 'James',
+    url: './james.png',
+    traits: [
+      'asian down perm addict',
+      'i turn 23 in 3 months',
+      'ex-light machine gunner from the korean army',
+    ],
+  },
+  {
+    id: '2',
+    name: 'Khoi',
+    url: '/khoi.jpeg',
+    traits: [
+      'puts milk before cereal',
+      'apple calendar enjoyer',
+      'wakes up past 1 pm most weekends',
+      'halal fiend',
+      'pickleball addict',
+    ],
+  },
+  {
+    id: '3',
+    name: 'Evelyn',
+    url: '/evelyn.jpg',
+    traits: [
+      'dnd princess',
+      'chalant',
+      'retail therapy',
+      'i can only bribe myself to enter van pelt if i bring a sweet treat w me',
+      'doesnt make her bed',
+    ],
+  },
+];
 
 function App() {
+  const [currUsers, setCurrUsers] = useState(users);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -57,8 +97,15 @@ function App() {
                   />
                   {/* Routes accessed only if user is authenticated */}
                   <Route element={<UnauthenticatedRoutesWrapper />}>
-                    <Route path="/home" element={<HomePage />} />
+                    <Route
+                      path="/home"
+                      element={<HomePage users={currUsers} />}
+                    />
                     <Route path="/home/:userId" element={<UserPage />} />
+                    <Route
+                      path="/create"
+                      element={<CreateUser setCurrUsers={setCurrUsers} />}
+                    />
                   </Route>
                   <Route element={<AdminRoutesWrapper />}>
                     <Route path="/users" element={<AdminDashboardPage />} />
