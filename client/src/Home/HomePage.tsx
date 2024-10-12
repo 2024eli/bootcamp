@@ -13,8 +13,14 @@ const users = [
   {
     id: '2',
     name: 'Khoi',
-    url: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png',
-    traits: [],
+    url: '/khoi.jpeg',
+    traits: [
+      'puts milk before cereal',
+      'apple calendar enjoyer',
+      'wakes up past 1 pm most weekends',
+      'halal fiend',
+      'pickleball addict'
+    ],
   },
   {
     id: '3',
