@@ -15,7 +15,7 @@ function ScreenGrid({ children }: AnyChildren) {
       columnGap={2}
       padding={2}
       height="100vh"
-      justifyContent="flex-start"
+      justifyContent="center"
       alignItems="flex-start"
     >
       {children}

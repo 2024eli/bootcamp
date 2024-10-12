@@ -19,7 +19,7 @@ const users = [
       'apple calendar enjoyer',
       'wakes up past 1 pm most weekends',
       'halal fiend',
-      'pickleball addict'
+      'pickleball addict',
     ],
   },
   {
@@ -38,8 +38,8 @@ const users = [
 function HomePage() {
   return (
     <Box sx={{ padding: (theme) => theme.spacing(2) }}>
-      <Typography variant="h1" sx={{ mb: 2 }}>
-        Toxic traits
+      <Typography variant="h1" textAlign="center" sx={{ mb: 2 }}>
+        Toxic Traits
       </Typography>
       <ScreenGrid>
         {users.map((user) => (
