@@ -30,8 +30,10 @@ export default function UserPage() {
         <List>
           {traits.map((trait) => (
             <ListItem>
-              <ListItemIcon>
-                <FiberManualRecordIcon fontSize="small" />
+              <ListItemIcon
+                sx={{ position: 'relative', top: '1px', left: '30px' }}
+              >
+                <FiberManualRecordIcon fontSize="inherit" />
               </ListItemIcon>
               <ListItemText primary={trait} />
             </ListItem>
