@@ -1,11 +1,20 @@
 import React from 'react';
-import { Typography, List, ListItem, ListItemText } from '@mui/material';
+import {
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  ListItemIcon,
+} from '@mui/material';
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import { useLocation } from 'react-router-dom';
 
 interface UserState {
   name: string;
   traits: string[];
 }
+const apos = "'";
 
 export default function UserPage() {
   const location = useLocation();
@@ -13,16 +22,22 @@ export default function UserPage() {
 
   return (
     <div>
-      <Typography variant="h5" gutterBottom>
-        Toxic Traits of {name}:
+      <Typography align="center" variant="h5" gutterBottom>
+        {name}
+        {apos}s Toxic Traits:
       </Typography>
-      <List>
-        {traits.map((trait) => (
-          <ListItem>
-            <ListItemText primary={trait} />
-          </ListItem>
-        ))}
-      </List>
+      <Box display="flex" justifyContent="center">
+        <List>
+          {traits.map((trait) => (
+            <ListItem>
+              <ListItemIcon>
+                <FiberManualRecordIcon fontSize="small" />
+              </ListItemIcon>
+              <ListItemText primary={trait} />
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </div>
   );
 }
