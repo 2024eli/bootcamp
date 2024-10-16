@@ -6,7 +6,6 @@ import session from 'express-session';
 import cors from 'cors';
 import MongoStore from 'connect-mongo';
 import routers from '../routes/routers';
-import initializePassport from './configPassport';
 import 'dotenv/config';
 import apiErrorResponder from '../util/apiErrorResponder';
 import ApiError from '../util/apiError';
@@ -21,7 +20,6 @@ const createExpressApp = (sessionStore: MongoStore): express.Express => {
   const app = express();
 
   // Set up passport and strategies
-  initializePassport(passport);
 
   // Sets the port for the app
   app.set('port', process.env.PORT || 4000);
