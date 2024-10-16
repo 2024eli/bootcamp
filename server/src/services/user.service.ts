@@ -26,22 +26,20 @@ const removeSensitiveDataQueryKeepPassword = [
  * @param password - string representing the password of the user
  * @returns The created {@link User}
  */
-const createUser = async (
-  firstName: string,
-  lastName: string,
-  email: string,
-  password: string,
+const createUserInDB = async (
+  name: string,
+  gradYear: string,
+  major: string,
+  hometown: string,
+  toxicTraits: string[],
+
 ) => {
-  const hashedPassword = await hash(password, passwordHashSaltRounds);
-  if (!hashedPassword) {
-    return null;
-  }
   const newUser = new User({
-    firstName,
-    lastName,
-    email,
-    password: hashedPassword,
-    admin: false,
+    name,
+    gradYear,
+    major,
+    hometown,
+    toxicTraits,
   });
   const user = await newUser.save();
   return user;
@@ -119,17 +117,6 @@ const getAllUsersFromDB = async () => {
   return userList;
 };
 
-/**
- * A function that upgrades a certain user to an admin.
- * @param id The id of the user to upgrade.
- * @returns The upgraded {@link User}
- */
-const upgradeUserToAdmin = async (id: string) => {
-  const user = await User.findByIdAndUpdate(id, [
-    { $set: { admin: { $eq: [false, '$admin'] } } },
-  ]).exec();
-  return user;
-};
 
 /**
  * A function that deletes a user from the database.
@@ -143,13 +130,12 @@ const deleteUserById = async (id: string) => {
 
 export {
   passwordHashSaltRounds,
-  createUser,
+  createUserInDB,
   getUserByEmail,
   getUserByVerificationToken,
   getUserById,
   getUserByEmailWithPassword,
   getUserByResetPasswordToken,
   getAllUsersFromDB,
-  upgradeUserToAdmin,
   deleteUserById,
 };

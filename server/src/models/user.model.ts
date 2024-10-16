@@ -5,62 +5,35 @@
 import mongoose from 'mongoose';
 
 const UserSchema = new mongoose.Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
   },
-  lastName: {
+  gradYear: {
     type: String,
     required: true,
   },
-  email: {
-    type: String,
-    match:
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/g,
-  },
-  password: {
+  major: {
     type: String,
     required: true,
   },
-  verified: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  verificationToken: {
+  hometown: {
     type: String,
-    required: false,
-    unique: true,
-    sparse: true,
-  },
-  resetPasswordToken: {
-    type: String,
-    required: false,
-    unique: true,
-    sparse: true,
-  },
-  resetPasswordTokenExpiryDate: {
-    type: Date,
-    required: false,
-  },
-  admin: {
-    type: Boolean,
     required: true,
-    default: false,
+  },
+  toxicTraits: {
+    type: [String],
+    required: true,
   },
 });
 
 interface IUser extends mongoose.Document {
   _id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  verified: boolean;
-  verificationToken: string | null | undefined;
-  resetPasswordToken: string | null | undefined;
-  resetPasswordTokenExpiryDate: Date | null | undefined;
-  admin: boolean;
+  name: string;
+  gradYear: string;
+  hometown: string;
+  major: string;
+  toxicTraits: [string];
 }
 
 const User = mongoose.model<IUser>('User', UserSchema);
