@@ -37,20 +37,34 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
     setToxicTrait('');
   };
 
-  const addUser = () => {
-    setCurrUsers((prev) => [
-      {
-        id: uuidv4(),
-        name,
-        traits: toxicTraits,
-        url: './empty.jpg',
-        year,
-        hometown,
+  const addUser = async () => {
+    const newUser = {
+      id: uuidv4(),
+      name,
+      traits: toxicTraits,
+      url: './empty.jpg', // Assuming this is the default user image
+      year,
+      hometown,
+    };
+    const response = await fetch('https://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      ...prev,
-    ]);
+      body: JSON.stringify(newUser),
+    });
+    if (response.ok) {
+      const createdUser = await response.json();
 
-    navigate('/home');
+      // Update the frontend state to include the newly created user
+      setCurrUsers((prev) => [createdUser, ...prev]);
+
+      // Navigate to the home page after successful creation
+      navigate('/home');
+    } else {
+      // Handle server errors
+      console.error('Failed to create user');
+    }
   };
 
   return (
