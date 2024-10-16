@@ -102,6 +102,32 @@ const theme = createTheme({
         },
       ],
     },
+    MuiTextField: {
+      styleOverrides: {
+        root: () => ({
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: theme.palette.primary.main,
+            },
+            '&:hover fieldset': {
+              borderColor: theme.palette.secondary.main,
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: theme.palette.secondary.main,
+            },
+          },
+          '& .MuiInputLabel-root': {
+            color: theme.palette.secondary.main,
+            '&.Mui-focused': {
+              color: theme.palette.secondary.main,
+            },
+          },
+          '& .MuiInputBase-input': {
+            color: theme.palette.primary.main,
+          },
+        }),
+      },
+    },
   },
 });
 
