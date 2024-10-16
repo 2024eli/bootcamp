@@ -29,7 +29,7 @@ const users = [
   {
     id: '1',
     name: 'James',
-    url: './james.png',
+    url: '/james.png',
     traits: [
       'asian down perm addict',
       'i turn 23 in 3 months',
@@ -56,7 +56,7 @@ const users = [
       'dnd princess',
       'chalant',
       'retail therapy',
-      'i can only bribe myself to enter van pelt if i bring a sweet treat w me',
+      'can only enter van pelt if bribed w a sweet treat',
       'doesnt make her bed',
     ],
   },

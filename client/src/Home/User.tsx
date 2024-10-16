@@ -16,7 +16,7 @@ export default function User({ id, name, url, traits }: CardProps) {
   const navigate = useNavigate();
 
   const onClick = (userId: string) => {
-    navigate(`/home/${userId}`, { state: { name, traits } });
+    navigate(`/home/${userId}`, { state: { name, traits, url } });
   };
 
   return (

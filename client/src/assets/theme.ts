@@ -18,6 +18,7 @@ const theme = createTheme({
     },
     background: {
       default: '#bf360c',
+      paper: '#3e2723',
     },
     // Used by `getContrastText()` to maximize the contrast between
     // the background and the text.
