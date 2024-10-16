@@ -2,7 +2,6 @@
  * A file for defining the global MUI theme used in the project.
  */
 import { createTheme } from '@mui/material/styles';
-import COLORS from './colors';
 import 'typeface-hk-grotesk';
 
 // https://github.com/hack4impact/chapter-website-template/blob/main/public/style.css
@@ -12,10 +11,13 @@ const theme = createTheme({
       // light: will be calculated from palette.primary.main,
       // dark: will be calculated from palette.primary.main,
       // contrastText: will be calculated to contrast with palette.primary.main
-      main: COLORS.primaryBlue,
+      main: '#fbe9e7',
     },
     secondary: {
-      main: COLORS.secondarySeafoam,
+      main: '#ff5722',
+    },
+    background: {
+      default: '#bf360c',
     },
     // Used by `getContrastText()` to maximize the contrast between
     // the background and the text.
@@ -63,6 +65,41 @@ const theme = createTheme({
           fontWeight: 'bold !important',
         },
       },
+    },
+    MuiCard: {
+      styleOverrides: {
+        root: () => ({
+          backgroundColor: theme.palette.secondary.main,
+          color: theme.palette.primary.main,
+          boxShadow: '0 8px 16px 0 rgba(0,0,0,0.5)',
+          transition: '0.3s',
+          '&:hover': {
+            boxShadow: '0 16px 32px 0 rgba(89,0,0,0.2)',
+          },
+        }),
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: '#fbe9e7',
+        },
+      },
+      variants: [
+        {
+          props: { variant: 'h1' },
+          style: () => ({
+            backgroundcolor: 'primary',
+            backgroundImage: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+            backgroundSize: '100%',
+            backgroundRepeat: 'repeat',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            mb: 2,
+          }),
+        },
+      ],
     },
   },
 });

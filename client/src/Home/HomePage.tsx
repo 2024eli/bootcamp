@@ -1,8 +1,10 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 import ScreenGrid from '../components/ScreenGrid';
 import User from './User';
 import AddUser from './AddUser';
+import Typewriter from '../components/Typewriter';
 import { User as UserType } from '../util/types/custom';
 
 interface HomePageProps {
@@ -11,24 +13,15 @@ interface HomePageProps {
 
 function HomePage({ users }: HomePageProps) {
   return (
-    <Box sx={{ padding: (theme) => theme.spacing(2) }}>
-      <Typography
-        variant="h1"
-        align="center"
-        color="grey.700"
+    <Box sx={{ padding: (t) => t.spacing(2) }}>
+      <Box
+        className="Title"
         sx={{
-          backgroundcolor: 'primary',
-          backgroundImage: `linear-gradient(45deg, #5514B4, #FF80FF)`,
-          backgroundSize: '100%',
-          backgroundRepeat: 'repeat',
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          mb: 2,
+          height: 150,
         }}
       >
-        Toxic Traits
-      </Typography>
+        <Typewriter text="Toxic Traits" />
+      </Box>
       <ScreenGrid>
         {users.map((user: any) => (
           <User
