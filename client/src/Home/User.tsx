@@ -10,9 +10,18 @@ interface CardProps {
   name: string;
   url: string;
   traits: string[];
+  year: string;
+  hometown: string;
 }
 
-export default function User({ id, name, url, traits }: CardProps) {
+export default function User({
+  id,
+  name,
+  url,
+  traits,
+  year,
+  hometown,
+}: CardProps) {
   const navigate = useNavigate();
 
   const onClick = (userId: string) => {
@@ -24,7 +33,7 @@ export default function User({ id, name, url, traits }: CardProps) {
       <CardMedia sx={{ height: 200 }} image={url} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {name}
+          {name} from {hometown}
         </Typography>
       </CardContent>
     </Card>

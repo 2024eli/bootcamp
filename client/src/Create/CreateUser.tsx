@@ -24,6 +24,8 @@ interface CreateUserProps {
 
 export default function CreateUser({ setCurrUsers }: CreateUserProps) {
   const [name, setName] = useState<string>('');
+  const [year, setYear] = useState<string>('');
+  const [hometown, setHometown] = useState<string>('');
   const [toxicTrait, setToxicTrait] = useState<string>('');
   const [toxicTraits, setToxicTraits] = useState<string[]>([]);
 
@@ -37,7 +39,14 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
 
   const addUser = () => {
     setCurrUsers((prev) => [
-      { id: uuidv4(), name, traits: toxicTraits, url: './empty.jpg' },
+      {
+        id: uuidv4(),
+        name,
+        traits: toxicTraits,
+        url: './empty.jpg',
+        year,
+        hometown,
+      },
       ...prev,
     ]);
 

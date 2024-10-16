@@ -3,4 +3,6 @@ export interface User {
   name: string;
   url: string;
   traits: string[];
+  year: string;
+  hometown: string;
 }

@@ -35,6 +35,8 @@ const users = [
       'i turn 23 in 3 months',
       'ex-light machine gunner from the korean army',
     ],
+    year: '2026',
+    hometown: 'Seoul, Korea',
   },
   {
     id: '2',
@@ -47,6 +49,8 @@ const users = [
       'halal fiend',
       'pickleball addict',
     ],
+    year: '2028',
+    hometown: 'Mclean, VA',
   },
   {
     id: '3',
@@ -59,6 +63,8 @@ const users = [
       'can only enter van pelt if bribed w a sweet treat',
       'doesnt make her bed',
     ],
+    year: '2028',
+    hometown: 'Chantilly, VA',
   },
 ];
 
