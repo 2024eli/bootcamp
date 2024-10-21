@@ -17,6 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useTheme } from '@mui/material/styles';
 import { User } from '../util/types/custom';
+import { getData, putData, deleteData, postData, useData } from '../util/api';
 
 interface CreateUserProps {
   setCurrUsers: React.Dispatch<SetStateAction<User[]>>;
@@ -46,25 +47,14 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
       year,
       hometown,
     };
-    const response = await fetch('https://localhost:5000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUser),
-    });
-    if (response.ok) {
-      const createdUser = await response.json();
-
-      // Update the frontend state to include the newly created user
-      setCurrUsers((prev) => [createdUser, ...prev]);
-
-      // Navigate to the home page after successful creation
-      navigate('/home');
-    } else {
-      // Handle server errors
-      console.error('Failed to create user');
-    }
+    postData(`/users/${newUser.id}`, newUser)
+      .then(() => {
+        setCurrUsers((prev) => [...prev, newUser]);
+        navigate('/home');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

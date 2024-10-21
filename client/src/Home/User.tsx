@@ -12,6 +12,7 @@ interface CardProps {
   traits: string[];
   year: string;
   hometown: string;
+  deleteUser: (user_id: string) => void;
 }
 
 export default function User({
@@ -21,6 +22,7 @@ export default function User({
   traits,
   year,
   hometown,
+  deleteUser,
 }: CardProps) {
   const navigate = useNavigate();
 
@@ -28,8 +30,9 @@ export default function User({
     navigate(`/home/${userId}`, { state: { name, traits, url } });
   };
 
+  
   return (
-    <Card onClick={() => onClick(id)}>
+    <Card onClick={() => onClick(id)} onDelete={() => deleteUser(id)}>
       <CardMedia sx={{ height: 200 }} image={url} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

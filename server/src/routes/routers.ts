@@ -11,7 +11,7 @@ import userRouter from './user.route';
 
 const prefixToRouterMap: { prefix: string; router: Router }[] = [
   {
-    prefix: '/api/user',
+    prefix: '/api/',
     router: userRouter,
   },
 ];

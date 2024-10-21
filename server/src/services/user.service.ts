@@ -32,7 +32,7 @@ const createUserInDB = async (
   major: string,
   hometown: string,
   toxicTraits: string[],
-
+  image_url: string,
 ) => {
   const newUser = new User({
     name,
@@ -40,6 +40,7 @@ const createUserInDB = async (
     major,
     hometown,
     toxicTraits,
+    image_url,
   });
   const user = await newUser.save();
   return user;

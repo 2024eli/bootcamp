@@ -105,7 +105,9 @@ function App() {
                   <Route element={<UnauthenticatedRoutesWrapper />}>
                     <Route
                       path="/home"
-                      element={<HomePage users={currUsers} />}
+                      element={
+                        <HomePage users={currUsers} setUsers={setCurrUsers} />
+                      }
                     />
                     <Route path="/home/:userId" element={<UserPage />} />
                     <Route
