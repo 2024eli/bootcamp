@@ -47,14 +47,26 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
       year,
       hometown,
     };
-    postData(`/users/${newUser.id}`, newUser)
-      .then(() => {
-        setCurrUsers((prev) => [...prev, newUser]);
-        navigate('/home');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    try {
+      // Adjust postData to send the request properly
+      const userResponse = await postData('users/create', newUser);
+      console.log(userResponse);
+      
+      // Set the new user in the state and navigate
+      setCurrUsers((prev) => [...prev, newUser]);
+      navigate('/home');
+    } catch (error) {
+      console.error('Error adding user:', error);
+    }
+    
+    // postData('users/create', newUser)
+    //   .then((userResponse) => {
+    //     setCurrUsers((prev) => [...prev, newUser]);
+    //     navigate('/home');
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (

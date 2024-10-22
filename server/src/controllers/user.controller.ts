@@ -36,7 +36,7 @@ const createUser = async(
     next: express.NextFunction,
     ) => {
         const { name, gradYear, major, hometown, toxicTraits, image_url } = req.body;
-
+        console.log('called');
         return (
             createUserInDB(name, gradYear, major, hometown, toxicTraits, image_url)
                 .then((user) =>{

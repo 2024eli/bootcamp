@@ -114,7 +114,7 @@ const getUserByResetPasswordToken = async (resetPasswordToken: string) => {
  * @returns All the {@link User}s in the database without their passwords.
  */
 const getAllUsersFromDB = async () => {
-  const userList = await User.find({}).select(removeSensitiveDataQuery).exec();
+  const userList = await User.find().exec();
   return userList;
 };
 

@@ -14,15 +14,16 @@ interface HomeProp {
 }
 
 function HomePage({ users, setUsers }: HomeProp) {
-  const response = useData('/users');
+  const response = useData('users');
   useEffect(() => {
+    console.log(response)
     if (response?.data && response.data.length > 0) {
       setUsers(response.data);
     }
   }, [response, setUsers]);
 
   const deleteUser = async (userId: string) => {
-    deleteData(`/users/${userId}`)
+    deleteData(`users/${userId}`)
       .then(() => {
         setUsers(users.filter((user) => user.id !== userId));
       })
