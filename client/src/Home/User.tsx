@@ -7,32 +7,35 @@ import { useNavigate } from 'react-router-dom';
 import Card from '../components/card/Card';
 
 interface CardProps {
-  id: string;
+  _id: string;
   name: string;
   url: string;
   traits: string[];
   year: string;
   hometown: string;
   major: string;
+  deleteUser: (user_id: string) => void;
 }
 
 export default function User({
-  id,
+  _id,
   name,
   url,
   traits,
   year,
   hometown,
   major,
+  deleteUser,
 }: CardProps) {
   const navigate = useNavigate();
 
   const onClick = (userId: string) => {
+    console.log(userId);
     navigate(`/home/${userId}`, { state: { name, traits, url } });
   };
 
   return (
-    <Card onClick={() => onClick(id)}>
+    <Card onClick={() => onClick(_id)} onDelete={() => deleteUser(_id)}>
       <CardMedia sx={{ height: 200 }} image={url} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

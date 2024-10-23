@@ -52,7 +52,6 @@ const createExpressApp = (sessionStore: MongoStore): express.Express => {
   // Init passport on every route call and allow it to use "express-session"
   app.use(passport.initialize());
   app.use(passport.session());
-
   // Inits routers listed in routers.ts file
   routers.forEach((entry) => app.use(entry.prefix, entry.router));
 

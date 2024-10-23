@@ -11,5 +11,6 @@ module.exports = {
       },
     ],
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    "no-underscore-dangle": "off"
   },
 };

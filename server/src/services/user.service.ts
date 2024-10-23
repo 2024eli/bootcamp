@@ -28,18 +28,19 @@ const removeSensitiveDataQueryKeepPassword = [
  */
 const createUserInDB = async (
   name: string,
-  gradYear: string,
-  major: string,
+  url: string,
+  traits: string[],
+  year: string,
   hometown: string,
-  toxicTraits: string[],
-
+  major: string,
 ) => {
   const newUser = new User({
     name,
-    gradYear,
-    major,
+    url,
+    traits,
+    year,
     hometown,
-    toxicTraits,
+    major,
   });
   const user = await newUser.save();
   return user;
