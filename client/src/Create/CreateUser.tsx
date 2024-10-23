@@ -68,17 +68,6 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
     } catch (error) {
       console.error('Error creating user:', error);
     }
-    /*
-    postData('users', newUser)
-      .then(() => {
-        console.log("Created User, "+ `users`);
-        setCurrUsers((prev) => [...prev, newUser]);
-        navigate('/home');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      */
   };
 
   return (

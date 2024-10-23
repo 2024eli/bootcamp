@@ -7,6 +7,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn'],
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    'no-underscore-dangle': 'off',
   },
   env: {
     browser: true,
