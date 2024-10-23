@@ -9,9 +9,8 @@ interface CardProps {
   children: React.ReactNode;
 }
 
-export default function Card({onClick, onDelete, children }: CardProps) {
+export default function Card({ onClick, onDelete, children }: CardProps) {
   const handleDelete = (event: React.MouseEvent) => {
-    //event.stopPropagation(); // Prevent the card's onClick from firing
     if (onDelete) {
       onDelete();
     }

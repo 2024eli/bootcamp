@@ -27,7 +27,7 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
   const [name, setName] = useState<string>('');
   const [year, setYear] = useState<string>('');
   const [hometown, setHometown] = useState<string>('');
-  const [url, setUrl] = useState<string>('');
+  const [url, setUrl] = useState<string>('./empty.jpg');
   const [major, setMajor] = useState<string>('');
   const [toxicTrait, setToxicTrait] = useState<string>('');
   const [toxicTraits, setToxicTraits] = useState<string[]>([]);
@@ -42,30 +42,43 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
 
   const addUser = async () => {
     const newUser = {
-      id: uuidv4(),
       name,
+      url,
       traits: toxicTraits,
-      url: './empty.jpg',
       year,
       hometown,
       major,
     };
-    const response = await fetch('https://localhost:5000/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newUser),
-    });
-    if (response.ok) {
-      const createdUser = await response.json();
-
-      setCurrUsers((prev) => [createdUser, ...prev]);
-
-      navigate('/home');
-    } else {
-      console.error('Failed to create user');
+    try {
+      // 1. Post to the backend to create the user
+      const response = await postData('users', newUser);
+      // 2. Check if the response contains the created user with an _id
+      if (response && response.data && response.data._id) {
+        const createdUser = response.data; // Access the user data from the response
+        console.log('Created User:', createdUser);
+        // 3. Update local state with the new user object, including _id
+        setCurrUsers((prev) => [...prev, createdUser]);
+        // 4. Navigate to the user page using the new user's ID
+        navigate(`/home`);
+      } else {
+        throw new Error(
+          'Failed to create user or response does not contain _id',
+        );
+      }
+    } catch (error) {
+      console.error('Error creating user:', error);
     }
+    /*
+    postData('users', newUser)
+      .then(() => {
+        console.log("Created User, "+ `users`);
+        setCurrUsers((prev) => [...prev, newUser]);
+        navigate('/home');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      */
   };
 
   return (

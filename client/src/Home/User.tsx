@@ -41,7 +41,9 @@ export default function User({
         <Typography gutterBottom variant="h5" component="div">
           {name}
         </Typography>
-        <Chip>{year}</Chip> <Chip>{hometown}</Chip> <Chip>{major}</Chip>
+        <Chip color="primary">{year}</Chip>
+        <Chip color="success">{hometown}</Chip>
+        <Chip color="danger">{major}</Chip>
       </CardContent>
     </Card>
   );
