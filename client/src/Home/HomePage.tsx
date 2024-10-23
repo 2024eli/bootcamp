@@ -14,7 +14,7 @@ interface HomeProp {
 }
 
 function HomePage({ users, setUsers }: HomeProp) {
-  const response = useData('/users');
+  const response = useData('users');
   useEffect(() => {
     if (response?.data && response.data.length > 0) {
       setUsers(response.data);
@@ -22,9 +22,9 @@ function HomePage({ users, setUsers }: HomeProp) {
   }, [response, setUsers]);
 
   const deleteUser = async (userId: string) => {
-    deleteData(`/users/${userId}`)
+    deleteData(`users/${userId}`)
       .then(() => {
-        setUsers(users.filter((user) => user.id !== userId));
+        setUsers(users.filter((user) => user._id !== userId));
       })
       .catch((error) => {
         console.log(error);
@@ -44,13 +44,14 @@ function HomePage({ users, setUsers }: HomeProp) {
       <ScreenGrid>
         {users.map((user: any) => (
           <User
-            key={user.id}
-            id={user.id}
+            key={user._id}
+            _id={user._id}
             name={user.name}
             url={user.url}
             traits={user.traits}
             year={user.gradYear}
             hometown={user.hometown}
+            major={user.major}
             deleteUser={deleteUser}
           />
         ))}

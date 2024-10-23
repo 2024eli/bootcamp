@@ -24,7 +24,8 @@ import AlertPopup from './components/AlertPopup';
 import InviteRegisterPage from './Authentication/InviteRegisterPage';
 import UserPage from './User/UserPage';
 import CreateUser from './Create/CreateUser';
-
+import { User as UserType } from './util/types/custom';
+/*
 const users = [
   {
     id: '1',
@@ -67,9 +68,9 @@ const users = [
     hometown: 'Chantilly, VA',
   },
 ];
-
+*/
 function App() {
-  const [currUsers, setCurrUsers] = useState(users);
+  const [currUsers, setCurrUsers] = useState<UserType[]>([]);
 
   return (
     <div className="App">
@@ -109,7 +110,7 @@ function App() {
                         <HomePage users={currUsers} setUsers={setCurrUsers} />
                       }
                     />
-                    <Route path="/home/:userId" element={<UserPage />} />
+                    <Route path="/home/:id" element={<UserPage />} />
                     <Route
                       path="/create"
                       element={<CreateUser setCurrUsers={setCurrUsers} />}

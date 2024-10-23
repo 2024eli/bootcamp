@@ -9,11 +9,15 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  gradYear: {
+  url: {
     type: String,
     required: true,
   },
-  major: {
+  traits: {
+    type: [String],
+    required: true,
+  },
+  year: {
     type: String,
     required: true,
   },
@@ -21,8 +25,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  toxicTraits: {
-    type: [String],
+  major: {
+    type: String,
     required: true,
   },
 });
@@ -30,10 +34,11 @@ const UserSchema = new mongoose.Schema({
 interface IUser extends mongoose.Document {
   _id: string;
   name: string;
+  url: string;
+  toxicTraits: [string];
   gradYear: string;
   hometown: string;
   major: string;
-  toxicTraits: [string];
 }
 
 const User = mongoose.model<IUser>('User', UserSchema);

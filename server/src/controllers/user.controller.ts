@@ -35,14 +35,16 @@ const createUser = async(
     res: express.Response,
     next: express.NextFunction,
     ) => {
-        const { name, gradYear, major, hometown, toxicTraits, image_url } = req.body;
-
+        const {name, url, traits, year, hometown, major} = req.body;
+        console.log(req.body);
+        console.log(name, url, traits, year, hometown, major);
         return (
-            createUserInDB(name, gradYear, major, hometown, toxicTraits, image_url)
+            createUserInDB(name, url, traits, year, hometown, major)
                 .then((user) =>{
                     res.status(StatusCode.OK).send(user);
                 })
                 .catch((e) => {
+                    console.log(e);
                     next(ApiError.internal('Unable to create user'));
                 })
         );
