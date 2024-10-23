@@ -5,4 +5,5 @@ export interface User {
   traits: string[];
   year: string;
   hometown: string;
+  major: string;
 }

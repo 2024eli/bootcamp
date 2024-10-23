@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Chip from '@mui/joy/Chip';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -12,6 +13,7 @@ interface CardProps {
   traits: string[];
   year: string;
   hometown: string;
+  major: string;
 }
 
 export default function User({
@@ -21,6 +23,7 @@ export default function User({
   traits,
   year,
   hometown,
+  major,
 }: CardProps) {
   const navigate = useNavigate();
 
@@ -33,8 +36,9 @@ export default function User({
       <CardMedia sx={{ height: 200 }} image={url} title={name} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {name} from {hometown}
+          {name}
         </Typography>
+        <Chip>{year}</Chip> <Chip>{hometown}</Chip> <Chip>{major}</Chip>
       </CardContent>
     </Card>
   );

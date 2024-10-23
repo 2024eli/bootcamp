@@ -37,6 +37,7 @@ const users = [
     ],
     year: '2026',
     hometown: 'Seoul, Korea',
+    major: 'CS',
   },
   {
     id: '2',
@@ -51,6 +52,7 @@ const users = [
     ],
     year: '2028',
     hometown: 'Mclean, VA',
+    major: 'CS + Finance',
   },
   {
     id: '3',
@@ -65,6 +67,7 @@ const users = [
     ],
     year: '2028',
     hometown: 'Chantilly, VA',
+    major: 'EE',
   },
 ];
 

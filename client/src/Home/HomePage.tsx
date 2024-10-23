@@ -30,8 +30,9 @@ function HomePage({ users }: HomePageProps) {
             name={user.name}
             url={user.url}
             traits={user.traits}
-            year={user.gradYear}
+            year={user.year}
             hometown={user.hometown}
+            major={user.major}
           />
         ))}
         <AddUser />

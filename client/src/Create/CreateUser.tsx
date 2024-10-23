@@ -26,6 +26,8 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
   const [name, setName] = useState<string>('');
   const [year, setYear] = useState<string>('');
   const [hometown, setHometown] = useState<string>('');
+  const [url, setUrl] = useState<string>('');
+  const [major, setMajor] = useState<string>('');
   const [toxicTrait, setToxicTrait] = useState<string>('');
   const [toxicTraits, setToxicTraits] = useState<string[]>([]);
 
@@ -42,9 +44,10 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
       id: uuidv4(),
       name,
       traits: toxicTraits,
-      url: './empty.jpg', // Assuming this is the default user image
+      url: './empty.jpg',
       year,
       hometown,
+      major,
     };
     const response = await fetch('https://localhost:5000/users', {
       method: 'POST',
@@ -56,13 +59,10 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
     if (response.ok) {
       const createdUser = await response.json();
 
-      // Update the frontend state to include the newly created user
       setCurrUsers((prev) => [createdUser, ...prev]);
 
-      // Navigate to the home page after successful creation
       navigate('/home');
     } else {
-      // Handle server errors
       console.error('Failed to create user');
     }
   };
@@ -101,6 +101,34 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
             fullWidth
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            label="Hometown"
+            variant="outlined"
+            fullWidth
+            value={hometown}
+            onChange={(e) => setHometown(e.target.value)}
+          />
+          <TextField
+            label="Year"
+            variant="outlined"
+            fullWidth
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          />
+          <TextField
+            label="Url"
+            variant="outlined"
+            fullWidth
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+          />
+          <TextField
+            label="Major"
+            variant="outlined"
+            fullWidth
+            value={major}
+            onChange={(e) => setMajor(e.target.value)}
           />
           <Box sx={{ display: 'flex', gap: 1 }}>
             <TextField

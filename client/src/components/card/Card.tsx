@@ -48,7 +48,7 @@ export default function Card({ onClick, onDelete, children }: CardProps) {
           '&:hover': {
             backgroundColor: theme.palette.primary.main,
           },
-          zIndex: 1, // Ensure the button is above the card
+          zIndex: 1,
         }}
         onClick={handleDelete}
         size="small"

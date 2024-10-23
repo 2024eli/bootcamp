@@ -8,9 +8,6 @@ import 'typeface-hk-grotesk';
 const theme = createTheme({
   palette: {
     primary: {
-      // light: will be calculated from palette.primary.main,
-      // dark: will be calculated from palette.primary.main,
-      // contrastText: will be calculated to contrast with palette.primary.main
       main: '#fbe9e7',
     },
     secondary: {
@@ -20,12 +17,7 @@ const theme = createTheme({
       default: '#bf360c',
       paper: '#3e2723',
     },
-    // Used by `getContrastText()` to maximize the contrast between
-    // the background and the text.
     contrastThreshold: 3,
-    // Used by the functions below to shift a color's luminance by approximately
-    // two indexes within its tonal palette.
-    // E.g., shift from Red 500 to Red 300 or Red 700.
     tonalOffset: 0.2,
   },
   typography: {
@@ -77,6 +69,7 @@ const theme = createTheme({
           '&:hover': {
             boxShadow: '0 16px 32px 0 rgba(89,0,0,0.2)',
           },
+          height: '200px',
         }),
       },
     },
