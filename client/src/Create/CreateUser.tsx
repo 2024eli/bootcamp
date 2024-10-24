@@ -27,7 +27,7 @@ export default function CreateUser({ setCurrUsers }: CreateUserProps) {
   const [name, setName] = useState<string>('');
   const [year, setYear] = useState<string>('');
   const [hometown, setHometown] = useState<string>('');
-  const [url, setUrl] = useState<string>('./empty.jpg');
+  const [url, setUrl] = useState<string>('');
   const [major, setMajor] = useState<string>('');
   const [toxicTrait, setToxicTrait] = useState<string>('');
   const [toxicTraits, setToxicTraits] = useState<string[]>([]);
